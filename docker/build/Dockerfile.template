@@ -21,3 +21,8 @@ RUN mkdir -p /usr/src/tinkerpop
 RUN curl -s https://bootstrap.pypa.io/ez_setup.py | python
 WORKDIR /usr/src/tinkerpop
 COPY . /usr/src/tinkerpop
+ENV M2_HOME /root/mvn-home
+ENV PATH ${M2_HOME}/bin:${PATH}
+ENV MVN_VERSION 3.3.9
+RUN chmod 744 .travis.install-maven.sh
+RUN ./.travis.install-maven.sh 3.3.9 ${M2_HOME}
