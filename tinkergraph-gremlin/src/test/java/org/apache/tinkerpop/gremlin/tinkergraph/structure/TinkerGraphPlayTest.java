@@ -90,7 +90,7 @@ public class TinkerGraphPlayTest {
     @Ignore
     public void testPlay4() throws Exception {
         Graph graph = TinkerGraph.open();
-        graph.io(GraphMLIo.build()).readGraph("/Users/marko/software/tinkerpop/tinkerpop3/data/grateful-dead.xml");
+        graph.io(GraphMLIo.build()).readGraph("data/grateful-dead.xml");
         GraphTraversalSource g = graph.traversal();
         final List<Supplier<Traversal>> traversals = Arrays.asList(
                 () -> g.V().has(T.label, "song").out().groupCount().<Vertex>by(t ->
@@ -237,7 +237,7 @@ public class TinkerGraphPlayTest {
 
         TinkerGraph graph = TinkerGraph.open();
         graph.createIndex("name", Vertex.class);
-        graph.io(GraphMLIo.build()).readGraph("/Users/marko/software/tinkerpop/tinkerpop3/data/grateful-dead.xml");
+        graph.io(GraphMLIo.build()).readGraph("data/grateful-dead.xml");
         GraphTraversalSource g = graph.traversal();
 
         final Supplier<Traversal<?, ?>> traversal = () ->
@@ -259,7 +259,7 @@ public class TinkerGraphPlayTest {
     @Ignore
     public void testPaths() throws Exception {
         TinkerGraph graph = TinkerGraph.open();
-        graph.io(GraphMLIo.build()).readGraph("/Users/twilmes/work/repos/scratch/tinkerpop/gremlin-test/src/main/resources/org/apache/tinkerpop/gremlin/structure/io/graphml/grateful-dead.xml");
+        graph.io(GraphMLIo.build()).readGraph("data/grateful-dead.xml");
 //        graph = TinkerFactory.createModern();
         GraphTraversalSource g = graph.traversal().withComputer(Computer.compute().workers(1));
 
